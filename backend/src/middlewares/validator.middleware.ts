@@ -48,7 +48,7 @@ export const validateQuery = (schema: ZodObject<any>) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const validated = await schema.parseAsync(req.query);
-      req.query = validated as any;
+      (req as any).validatedQuery = validated;
       next();
     } catch (error) {
       if (error instanceof ZodError) {

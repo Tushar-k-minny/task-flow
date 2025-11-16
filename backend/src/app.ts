@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express, { Application } from 'express';
 import helmet from 'helmet';
+import morgan from 'morgan';
 
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './docs/swagger';
@@ -20,6 +21,8 @@ app.use(
   })
 );
 app.use(helmet());
+
+app.use(morgan('dev'));
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));

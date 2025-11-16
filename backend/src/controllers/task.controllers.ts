@@ -8,7 +8,8 @@ declare global{
         interface Request{
             user:{
                 userId:string;
-            }
+            };
+            validatedQuery: any;
         }
     }
 }
@@ -31,7 +32,7 @@ export class TaskController {
   async getTasks(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const userId = req.user.userId;
-      const result = await taskService.getTasks(userId, req.query);
+      const result = await taskService.getTasks(userId, req.validatedQuery);
       res.status(200).json({
         success: true,
         data: result,
