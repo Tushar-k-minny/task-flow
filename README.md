@@ -1,4 +1,4 @@
-# Task Manager Monorepo
+# Task Flow Monorepo
 
 Full-stack task management platform that combines a Next.js frontend with an Express + Prisma backend. The backend exposes a documented REST API for authentication and task workflows, while the frontend provides a modern dashboard built with Tailwind CSS and Radix UI.
 
@@ -32,7 +32,7 @@ Full-stack task management platform that combines a Next.js frontend with an Exp
 ### `backend/.env`
 
 ```
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/task_manager"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/task_flow"
 PORT=5000
 JWT_ACCESS_SECRET="change-me-access"
 JWT_REFRESH_SECRET="change-me-refresh"
@@ -72,7 +72,7 @@ All commands run from the repository root:
 ## Folder Structure
 
 ```
-task-manager/
+task-/flow
   backend/
     prisma/          # Prisma schema and migrations
     src/
