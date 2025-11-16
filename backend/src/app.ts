@@ -1,10 +1,14 @@
 import cors from 'cors';
 import express, { Application } from 'express';
 import helmet from 'helmet';
+
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './docs/swagger';
-import { errorHandler, notFoundHandler } from './middlewares/error.middleware';
+
 import authRoutes from './routes/auth.routes';
+import taskRoutes from './routes/task.routes';
+
+import { errorHandler, notFoundHandler } from './middlewares/error.middleware';
 
 const app: Application = express();
 
@@ -46,6 +50,7 @@ app.get('/api-docs.json', (_req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
 
 // Error handling
 app.use(notFoundHandler);

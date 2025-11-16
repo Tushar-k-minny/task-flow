@@ -19,6 +19,7 @@ model User {
   updatedAt     DateTime @updatedAt
 
   refreshTokens RefreshToken[]
+  tasks         Task[]
 
   @@map("users")
 }
@@ -36,4 +37,28 @@ model RefreshToken {
 
   @@index([userId])
   @@map("refresh_tokens")
+}
+
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  status      TaskStatus @default(PENDING)
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("tasks")
+}
+
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
 }

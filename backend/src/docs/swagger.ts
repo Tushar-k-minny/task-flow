@@ -7,7 +7,8 @@ const options: swaggerJsdoc.Options = {
     info: {
       title: 'Task Management System API',
       version: '1.0.0',
-      description: 'A comprehensive task management REST API with authentication',
+      description:
+        'A comprehensive task management REST API with authentication',
       contact: {
         name: 'API Support',
         email: 'support@taskmanagement.com',
@@ -53,7 +54,38 @@ const options: swaggerJsdoc.Options = {
             },
           },
         },
-
+        Task: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string',
+              format: 'uuid',
+            },
+            title: {
+              type: 'string',
+            },
+            description: {
+              type: 'string',
+              nullable: true,
+            },
+            status: {
+              type: 'string',
+              enum: ['PENDING', 'IN_PROGRESS', 'COMPLETED'],
+            },
+            userId: {
+              type: 'string',
+              format: 'uuid',
+            },
+            createdAt: {
+              type: 'string',
+              format: 'date-time',
+            },
+            updatedAt: {
+              type: 'string',
+              format: 'date-time',
+            },
+          },
+        },
         Error: {
           type: 'object',
           properties: {
